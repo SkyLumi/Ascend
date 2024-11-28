@@ -18,3 +18,8 @@ Route::get('/register', function () {
 Route::get('/homepage', function () {
     return view('homepage');
 });
+
+
+Route::get('/komunitas', function () {
+    return view('komunitas');
+});
