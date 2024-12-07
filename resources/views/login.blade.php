@@ -9,7 +9,7 @@
 <body class="bg-green-400 flex justify-center items-center min-h-screen">
     <div class="bg-white text-black p-8 rounded-lg shadow-lg w-96">
         <h1 class="text-2xl font-bold text-center mb-6">Login</h1>
-        <form>
+        <form action="{{ route('login') }}" method="POST">
             @csrf
             <!-- Email -->
             <div class="mb-4">
@@ -21,6 +21,7 @@
                     class="w-full p-3 border border-green-300 bg-green-100 text-black rounded focus:outline-none focus:ring focus:ring-green-500 placeholder-green-600"
                     placeholder="Enter your email"
                     required
+                    value="{{ old('email') }}"
                 >
             </div>
             <!-- Password -->

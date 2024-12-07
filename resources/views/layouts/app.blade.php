@@ -14,7 +14,7 @@
             <ul class="flex items-center space-x-6 text-sm">
                 <li><a href="/homepage" class="text-white hover:underline">Homepage</a></li>
                 <li><a href="/komunitas" class="text-white hover:underline">Komunitas</a></li>
-                <li><a href="/pencatatan" class="text-white hover:underline">Pencatatan</a></li>
+                <li><a href="/artikel" class="text-white hover:underline">Artikel</a></li>
                 <li><a href="/challenge" class="text-white hover:underline">Challenge</a></li>
             </ul>
             <a href="/login" class="bg-green-700 text-white py-2 px-4 rounded-lg font-medium hover:bg-green-600 transition">
