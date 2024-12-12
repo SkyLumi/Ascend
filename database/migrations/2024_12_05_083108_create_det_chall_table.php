@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('det_chall', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('challenges_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('id_challenge')->constrained('challenges')->onDelete('cascade');
+            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
             $table->boolean('is_done')->default(false);
             $table->date('tanggal');
             $table->timestamps();
         });
-        
+
     }
 
     /**

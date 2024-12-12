@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_daily_task');
             $table->text('deskripsi');
-            $table->integer('durasi'); // Durasi dalam menit
+            $table->integer('durasi');
             $table->integer('reward_points');
             $table->timestamps();
         });

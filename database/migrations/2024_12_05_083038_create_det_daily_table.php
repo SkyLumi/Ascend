@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('det_daily', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('daily_task_id')->constrained('daily_tasks')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('id_daily_task')->constrained('daily_tasks')->onDelete('cascade');
+            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
             $table->boolean('is_done')->default(false);
             $table->date('tanggal');
             $table->timestamps();
         });
-        
+
     }
 
     /**

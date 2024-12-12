@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('komentar_artikel', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_artikel')->constrained('articles')->onDelete('cascade');
+            $table->foreignId('id_artikel')->constrained('artikel')->onDelete('cascade');
+            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
             $table->text('isi');
             $table->timestamps();
         });
-        
+
     }
 
     /**

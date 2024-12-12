@@ -3,13 +3,20 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminDailyTaskController;
+use App\Http\Controllers\AdminChallengeController;
 
-Route::middleware([\App\Http\Middleware\AdminMiddleware::class])->group(function () {
+Route::middleware('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::resource('user', AdminUserController::class);
+    Route::resource('daily-task', AdminDailyTaskController::class);
+    Route::resource('challenge', AdminChallengeController::class);
 });
 
-Route::middleware([\App\Http\Middleware\UserMiddleware::class])->group(function () {
-    Route::get('/homepage', [AdminController::class, 'index'])->name('user.homepage');
+Route::middleware('user')->group(function () {
+    Route::get('/homepage', [UserController::class, 'index'])->name('user.homepage');
 });
 
 Route::post('/logout', function () {
@@ -20,10 +27,6 @@ Route::post('/logout', function () {
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 // Route::get('/login', function () {
 //     return view('login');

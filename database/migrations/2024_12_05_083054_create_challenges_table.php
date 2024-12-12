@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('challenges', function (Blueprint $table) {
             $table->id();
-            $table->text('description');
+            $table->string('nama_challenge');
+            $table->text('deskripsi');
+            $table->integer('durasi');
             $table->integer('reward_points');
             $table->timestamps();
         });
-        
+
     }
 
     /**
