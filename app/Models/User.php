@@ -46,4 +46,21 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function userTasks()
+    {
+        return $this->hasMany(UserTask::class, 'id_user');
+    }
+
+    public function dailyTasks()
+    {
+        return $this->hasManyThrough(
+            DailyTask::class,
+            UserTask::class,
+            'id_user',        // Foreign key di UserTask
+            'id',             // Foreign key di DailyTask
+            'id',             // Local key di User
+            'id_daily_task'   // Local key di UserTask
+        );
+    }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\DailyTask;
 use App\Models\Challenge;
+use App\Models\Artikel;
 
 class AdminController extends Controller
 {
@@ -19,8 +20,9 @@ class AdminController extends Controller
         $users = User::all();
         $daily_tasks = DailyTask::all();
         $challenges = Challenge::all();
+        $artikels = Artikel::all();
 
-        return view('admin.dashboard', compact('users','daily_tasks','challenges'));
+        return view('admin.dashboard', compact('users','daily_tasks','challenges', 'artikels'));
     }
 
 }

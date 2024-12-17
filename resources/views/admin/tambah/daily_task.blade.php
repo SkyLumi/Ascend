@@ -7,6 +7,10 @@
     <h2 class="text-2xl font-bold text-center mb-6">Tambah Daily Task</h2>
     <div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg">
         <div class="p-6">
+            <a href="{{ url()->previous() }}"
+                class="inline-block mb-4 bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                 &larr; Back
+             </a>
             <form action="{{ route('daily-task.store') }}" method="POST">
                 @csrf
                 <!-- Nama Daily Task -->

@@ -6,44 +6,46 @@
 <!-- Hero Section -->
 <header class="bg-green-500 text-white py-20">
     <div class="container mx-auto px-4 text-center">
-        <h1 class="text-5xl font-extrabold mb-4">Selamat Datang di Ascend</h1>
+        <h1 class="text-4xl font-bold mb-2">Halo, {{ Auth::user()->nama }}!</h1>
+        <h2 class="text-5xl font-extrabold mb-4">Selamat Datang di Ascend</h2>
         <p class="text-lg font-medium mb-6">Temukan tantangan baru setiap hari untuk meningkatkan dirimu bersama komunitas terbaik!</p>
     </div>
 </header>
 
-<!-- Daily Challenges Section -->
-<section class="container mx-auto px-4 py-12">
+<!-- Daily Task Section -->
+<section class="container mx-auto px-4 py-12 relative">
     <h2 class="text-3xl font-bold text-center text-green-600 mb-8">Tantangan Harian</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+    <!-- Tombol Panah Kiri -->
+    <button id="scrollLeft" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600">
+        &#9664;
+    </button>
+
+    <!-- Container Tantangan -->
+    <div id="scrollContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pl-12 pr-12">
         <!-- Challenge Card 1 -->
-        <div class="bg-white p-6 rounded-lg shadow-xl hover:shadow-2xl transition">
-            <h3 class="text-2xl font-bold text-green-500 mb-2">Olahraga 30 Menit</h3>
-            <p class="text-gray-600 mb-4">Tingkatkan kesehatanmu dengan melakukan olahraga ringan selama 30 menit hari ini.</p>
-            <div class="flex justify-between items-center text-sm text-gray-500">
-                <span>🏆 10 Poin</span>
-                <span>⏳ 1 Hari</span>
-            </div>
-        </div>
-        <!-- Challenge Card 2 -->
-        <div class="bg-white p-6 rounded-lg shadow-xl hover:shadow-2xl transition">
-            <h3 class="text-2xl font-bold text-green-500 mb-2">Baca Buku 10 Halaman</h3>
-            <p class="text-gray-600 mb-4">Luangkan waktu untuk menambah wawasanmu dengan membaca buku favoritmu.</p>
-            <div class="flex justify-between items-center text-sm text-gray-500">
-                <span>🏆 15 Poin</span>
-                <span>⏳ 1 Hari</span>
-            </div>
-        </div>
-        <!-- Challenge Card 3 -->
-        <div class="bg-white p-6 rounded-lg shadow-xl hover:shadow-2xl transition">
-            <h3 class="text-2xl font-bold text-green-500 mb-2">Meditasi 10 Menit</h3>
-            <p class="text-gray-600 mb-4">Kendalikan pikiranmu dengan meditasi untuk meningkatkan fokus dan ketenangan.</p>
-            <div class="flex justify-between items-center text-sm text-gray-500">
-                <span>🏆 8 Poin</span>
-                <span>⏳ 1 Hari</span>
-            </div>
-        </div>
+        @foreach ($tasks as $task)
+            @component('components.tugas_card', [
+                'taskId' => $task->id,
+                'taskName' => $task->dailyTask->nama_daily_task,
+                'title' => $task->dailyTask->nama_daily_task,
+                'description' => $task->dailyTask->deskripsi,
+                'points' => $task->dailyTask->reward_points,
+                'duration' => $task->dailyTask->durasi . ' Menit',
+                'isCompleted' => $task->is_done
+            ])
+            @endcomponent
+        @endforeach
     </div>
+
+    <!-- Tombol Panah Kanan -->
+    <button id="scrollRight" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600">
+        &#9654;
+    </button>
 </section>
+
+
+
 
 <!-- Community Section -->
 <section class="bg-green-100 py-12">
@@ -106,4 +108,20 @@
         },
     });
 </script>
+<script>
+    const scrollContainer = document.getElementById('scrollContainer');
+    const scrollLeftBtn = document.getElementById('scrollLeft');
+    const scrollRightBtn = document.getElementById('scrollRight');
+
+    // Scroll ke kiri
+    scrollLeftBtn.addEventListener('click', () => {
+        scrollContainer.scrollBy({ left: -400, behavior: 'smooth' });
+    });
+
+    // Scroll ke kanan
+    scrollRightBtn.addEventListener('click', () => {
+        scrollContainer.scrollBy({ left: 400, behavior: 'smooth' });
+    });
+</script>
+
 @endsection

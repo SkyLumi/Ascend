@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('det_chall', function (Blueprint $table) {
+        Schema::create('user_task', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_challenge')->constrained('challenges')->onDelete('cascade');
+            $table->foreignId('id_daily_task')->constrained('daily_tasks')->onDelete('cascade');
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
             $table->boolean('is_done')->default(false);
             $table->date('tanggal');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('det_chall');
+        Schema::dropIfExists('user_task');
     }
 };

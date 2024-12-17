@@ -13,7 +13,7 @@
             <a href="{{ route('daily-task.index') }}" class="block py-2 px-4 rounded hover:bg-green-100">Manage Daily Tasks</a>
         </li>
         <li>
-            <a href="#articles" class="block py-2 px-4 rounded hover:bg-green-100">Manage Articles</a>
+            <a href="{{ route('artikel.index') }}" class="block py-2 px-4 rounded hover:bg-green-100">Manage Articles</a>
         </li>
     </ul>
 </aside>

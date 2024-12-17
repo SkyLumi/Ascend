@@ -45,4 +45,30 @@ class AdminChallengeController extends Controller
         return redirect()->route('challenge.index')->with('success', 'Challenge berhasil dihapus!');
     }
 
+    public function edit($id)
+    {
+        $challenge = Challenge::findOrFail($id);
+        return view('admin.edit.challenge', compact('challenge'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'nama_challenge' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'durasi' => 'required|integer|min:1',
+            'reward_points' => 'required|integer|min:0',
+        ]);
+
+        $challenge = Challenge::findOrFail($id);
+        $challenge->update([
+            'nama_challenge' => $validated['nama_challenge'],
+            'deskripsi' => $validated['deskripsi'],
+            'durasi' => $validated['durasi'],
+            'reward_points' => $validated['reward_points'],
+        ]);
+
+        return redirect()->route('challenge.index')->with('success', 'Challenge berhasil diperbarui!');
+    }
+
 }

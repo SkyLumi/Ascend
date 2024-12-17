@@ -45,4 +45,32 @@ class AdminDailyTaskController extends Controller
         return redirect()->route('daily-task.index')->with('success', 'Daily Task berhasil dihapus!');
     }
 
+    public function edit($id)
+    {
+        $dailyTask = DailyTask::findOrFail($id);
+        return view('admin.edit.daily_task', compact('dailyTask'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $dailyTask = DailyTask::findOrFail($id);
+
+        $validated = $request->validate([
+            'nama_daily_task' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'durasi' => 'required|integer|min:1',
+            'reward_points' => 'required|integer|min:0',
+        ]);
+
+        $dailyTask->update([
+            'nama_daily_task' => $validated['nama_daily_task'],
+            'deskripsi' => $validated['deskripsi'],
+            'durasi' => $validated['durasi'],
+            'reward_points' => $validated['reward_points'],
+        ]);
+
+        return redirect()->route('daily-task.index')->with('success', 'Daily Task berhasil diperbarui!');
+    }
+
+
 }

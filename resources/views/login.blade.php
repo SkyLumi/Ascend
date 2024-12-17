@@ -14,10 +14,10 @@
             <!-- Email -->
             <div class="mb-4">
                 <label for="email" class="block text-black text-sm font-medium mb-2">Email</label>
-                <input 
-                    type="email" 
-                    name="email" 
-                    id="email" 
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
                     class="w-full p-3 border border-green-300 bg-green-100 text-black rounded focus:outline-none focus:ring focus:ring-green-500 placeholder-green-600"
                     placeholder="Enter your email"
                     required
@@ -27,23 +27,18 @@
             <!-- Password -->
             <div class="mb-6">
                 <label for="password" class="block text-black text-sm font-medium mb-2">Password</label>
-                <input 
-                    type="password" 
-                    name="password" 
-                    id="password" 
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
                     class="w-full p-3 border border-green-300 bg-green-100 text-black rounded focus:outline-none focus:ring focus:ring-green-500 placeholder-green-600"
                     placeholder="Enter your password"
                     required
                 >
             </div>
-            <!-- Remember Me -->
-            <div class="flex items-center mb-6">
-                <input type="checkbox" name="remember" id="remember" class="text-green-500 focus:ring-green-500">
-                <label for="remember" class="text-sm text-black ml-2">Remember me</label>
-            </div>
             <!-- Submit Button -->
-            <button 
-                type="submit" 
+            <button
+                type="submit"
                 class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-400 transition">
                 Login
             </button>
